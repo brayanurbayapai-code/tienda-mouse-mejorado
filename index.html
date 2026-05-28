@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MouseStore | Tienda Gamer</title>
+
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            font-family: Arial, sans-serif;
+            background-image: url("fondo.jpg");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+        }
+
+        /* NAVBAR */
+
+        nav{
+            background-color: rgba(0,0,0,0.85);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav h1{
+            color: #00bfff;
+            font-size: 32px;
+        }
+
+        nav ul{
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav ul li a{
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover{
+            color: #00bfff;
+        }
+
+        /* HERO */
+
+        .hero{
+            height: 90vh;
+            background: rgba(0,0,0,0.55);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero-contenido h2{
+            font-size: 65px;
+            margin-bottom: 20px;
+        }
+
+        .hero-contenido p{
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        .hero button{
+            background-color: #00bfff;
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            font-size: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .hero button:hover{
+            background-color: #009acd;
+            transform: scale(1.05);
+        }
+
+        /* TITULO */
+
+        .titulo-container{
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .titulo{
+            background-color: rgba(0,0,0,0.7);
+            display: inline-block;
+            padding: 15px 35px;
+            border-radius: 10px;
+            font-size: 40px;
+        }
+
+        /* PRODUCTOS */
+
+        .contenedor{
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            padding: 50px;
+        }
+
+        .producto{
+            width: 320px;
+            background-color: rgba(255,255,255,0.95);
+            color: black;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0px 0px 15px black;
+            transition: 0.4s;
+        }
+
+        .producto:hover{
+            transform: translateY(-10px);
+        }
+
+        .producto img{
+            width: 100%;
+            height: 260px;
+            object-fit: contain;
+            background-color: white;
+            padding: 20px;
+        }
+
+        .info{
+            padding: 25px;
+            text-align: center;
+        }
+
+        .info h3{
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .info p{
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .precio{
+            font-size: 30px;
+            color: green;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .botones{
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        button{
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover{
+            transform: scale(1.05);
+        }
+
+        .comprar{
+            background-color: #007bff;
+        }
+
+        .comprar:hover{
+            background-color: #0056b3;
+        }
+
+        .carrito{
+            background-color: #28a745;
+        }
+
+        .carrito:hover{
+            background-color: #1f7d34;
+        }
+
+        /* BENEFICIOS */
+
+        .beneficios{
+            background-color: rgba(0,0,0,0.75);
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            padding: 60px 20px;
+        }
+
+        .beneficio{
+            width: 250px;
+            text-align: center;
+        }
+
+        .beneficio h3{
+            margin: 15px 0;
+            color: #00bfff;
+            font-size: 24px;
+        }
+
+        .beneficio p{
+            line-height: 1.5;
+        }
+
+        /* CONTACTO */
+
+        .contacto{
+            text-align: center;
+            padding: 60px 20px;
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        .contacto h2{
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        .contacto input,
+        .contacto textarea{
+            width: 80%;
+            max-width: 500px;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border: none;
+            font-size: 16px;
+        }
+
+        .contacto button{
+            background-color: #00bfff;
+            margin-top: 10px;
+            padding: 15px 25px;
+            font-size: 18px;
+        }
+
+        .contacto button:hover{
+            background-color: #009acd;
+        }
+
+        /* FOOTER */
+
+        footer{
+            background-color: rgba(0,0,0,0.9);
+            text-align: center;
+            padding: 25px;
+        }
+
+        footer p{
+            margin: 5px;
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width:768px){
+
+            nav{
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .hero-contenido h2{
+                font-size: 42px;
+            }
+
+            .hero-contenido p{
+                font-size: 18px;
+            }
+
+            .titulo{
+                font-size: 30px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <h1>MouseStore</h1>
+
+        <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Productos</a></li>
+            <li><a href="#">Ofertas</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+
+    </nav>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-contenido">
+
+            <h2>Bienvenido al Mundo Gamer</h2>
+
+            <p>
+                Encuentra los mejores mouse gamer del mercado
+            </p>
+
+            <a href="explorar.html">
+
+                <button>
+                    Explorar Tienda
+                </button>
+
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- TITULO -->
+
+    <div class="titulo-container">
+
+        <h2 class="titulo">
+            Productos Destacados
+        </h2>
+
+    </div>
+
+    <!-- PRODUCTOS -->
+
+    <div class="contenedor">
+
+        <!-- PRODUCTO 1 -->
+
+        <div class="producto">
+
+            <img src="https://cdn-icons-png.flaticon.com/512/3523/3523887.png">
+
+            <div class="info">
+
+                <h3>Mouse RGB Gamer</h3>
+
+                <p>
+                    Mouse gamer con iluminación RGB y sensor profesional.
+                </p>
+
+                <div class="precio">S/ 80</div>
+
+                <div class="botones">
+
+                    <a href="mouse-rgb.html">
+
+                        <button class="comprar">
+                            Comprar
+                        </button>
+
+                    </a>
+
+                    <button class="carrito">
+                        Carrito
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- PRODUCTO 2 -->
+
+        <div class="producto">
+
+            <img src="https://cdn-icons-png.flaticon.com/512/3523/3523887.png">
+
+            <div class="info">
+
+                <h3>Mouse Inalámbrico</h3>
+
+                <p>
+                    Conexión rápida y batería de larga duración.
+                </p>
+
+                <div class="precio">S/ 120</div>
+
+                <div class="botones">
+
+                    <a href="mouse-inalambrico.html">
+
+                        <button class="comprar">
+                            Comprar
+                        </button>
+
+                    </a>
+
+                    <button class="carrito">
+                        Carrito
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- PRODUCTO 3 -->
+
+        <div class="producto">
+
+            <img src="https://cdn-icons-png.flaticon.com/512/3523/3523887.png">
+
+            <div class="info">
+
+                <h3>Mouse Pro X</h3>
+
+                <p>
+                    Ideal para gaming competitivo y oficina.
+                </p>
+
+                <div class="precio">S/ 150</div>
+
+                <div class="botones">
+
+                    <a href="mouse-prox.html">
+
+                        <button class="comprar">
+                            Comprar
+                        </button>
+
+                    </a>
+
+                    <button class="carrito">
+                        Carrito
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- BENEFICIOS -->
+
+    <section class="beneficios">
+
+        <div class="beneficio">
+
+            <h3>🚚 Envío Gratis</h3>
+
+            <p>
+                Envíos rápidos a todo el Perú.
+            </p>
+
+        </div>
+
+        <div class="beneficio">
+
+            <h3>💳 Pago Seguro</h3>
+
+            <p>
+                Aceptamos tarjetas, Yape y Plin.
+            </p>
+
+        </div>
+
+        <div class="beneficio">
+
+            <h3>⭐ Calidad Premium</h3>
+
+            <p>
+                Productos originales garantizados.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- CONTACTO -->
+
+    <section class="contacto">
+
+        <h2>Contáctanos</h2>
+
+        <input type="text" placeholder="Tu nombre">
+
+        <br>
+
+        <input type="email" placeholder="Tu correo">
+
+        <br>
+
+        <textarea rows="5" placeholder="Escribe tu mensaje"></textarea>
+
+        <br>
+
+        <button>Enviar Mensaje</button>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 MouseStore - Todos los derechos reservados
+        </p>
+
+        <p>
+            Instagram | Facebook | TikTok
+        </p>
+
+    </footer>
+
+</body>
+</html>
